@@ -20,16 +20,20 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
+        
+        move_x, move_y= (-1, 0)
             
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            koukaton_rct.move_ip(0, -1)
-        elif key_lst[pg.K_DOWN]:
-            koukaton_rct.move_ip(0, 1)
-        elif key_lst[pg.K_RIGHT]:
-            koukaton_rct.move_ip(1, 0)
-        elif key_lst[pg.K_LEFT]:
-            koukaton_rct.move_ip(-1, 0)
+            move_y = -1
+        if key_lst[pg.K_DOWN]:
+            move_y = 1
+        if key_lst[pg.K_RIGHT]:
+            move_x = 1
+        if key_lst[pg.K_LEFT]:
+            move_x = -2
+        koukaton_rct.move_ip(move_x, move_y)
+        
 
         x = tmr%3200
 
